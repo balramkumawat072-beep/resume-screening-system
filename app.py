@@ -73,12 +73,44 @@ SAMPLE_CANDIDATES = [
             "knowledge from admin panel maintenance."
         ),
     },
+    {
+        "name": "Priya Nair",
+        "resume": (
+            "Senior frontend engineer with 7 years of experience in React, TypeScript, JavaScript, "
+            "HTML, CSS, accessibility, web performance, Storybook, component libraries, and testing. "
+            "Owned checkout flows, reduced page load time, and led design system adoption."
+        ),
+    },
+    {
+        "name": "Imran Khan",
+        "resume": (
+            "Product-minded frontend developer with 4 years of React, Redux, TypeScript, REST APIs, "
+            "CSS modules, unit testing, analytics instrumentation, and cross-functional delivery. "
+            "Built responsive SaaS workflows and collaborated with design and QA teams."
+        ),
+    },
+    {
+        "name": "Leena Thomas",
+        "resume": (
+            "UX designer transitioning into frontend development. Skilled in Figma, design systems, "
+            "accessibility reviews, HTML, CSS, and basic JavaScript. Completed React coursework and "
+            "built prototypes, but has limited production engineering experience."
+        ),
+    },
+    {
+        "name": "Vikram Sethi",
+        "resume": (
+            "Data analyst with Python, SQL, Power BI, Excel dashboards, reporting automation, and "
+            "stakeholder communication. Familiar with HTML from dashboard embedding, but no React, "
+            "TypeScript, CSS architecture, or frontend testing background."
+        ),
+    },
 ]
 
 
 def initialize_state():
     if "candidates" not in st.session_state:
-        st.session_state.candidates = []
+        st.session_state.candidates = SAMPLE_CANDIDATES.copy()
 
 
 def split_skills(value):
@@ -191,7 +223,7 @@ def apply_styles():
 
         .block-container {
             max-width: 1240px;
-            padding-top: 2rem;
+            padding-top: 4.75rem;
         }
 
         [data-testid="stSidebar"] {
@@ -234,6 +266,42 @@ def apply_styles():
 
         [data-testid="stSidebar"] [data-baseweb="slider"] span {
             color: #1c2528 !important;
+        }
+
+        .stButton > button,
+        .stDownloadButton > button {
+            min-height: 2.8rem;
+            border: 1px solid #0f7b61 !important;
+            border-radius: 8px !important;
+            background: #0f7b61 !important;
+            color: #ffffff !important;
+            font-weight: 800 !important;
+        }
+
+        .stButton > button p,
+        .stDownloadButton > button p,
+        .stButton > button span,
+        .stDownloadButton > button span {
+            color: #ffffff !important;
+        }
+
+        .stButton > button:hover,
+        .stDownloadButton > button:hover {
+            border-color: #2563eb !important;
+            background: #2563eb !important;
+            color: #ffffff !important;
+        }
+
+        .stButton > button:disabled {
+            border-color: #c9d5d9 !important;
+            background: #e8eef0 !important;
+            color: #617178 !important;
+            opacity: 1 !important;
+        }
+
+        .stButton > button:disabled p,
+        .stButton > button:disabled span {
+            color: #617178 !important;
         }
 
         .hero {
@@ -420,17 +488,20 @@ def main():
 
         col_add, col_sample = st.columns(2)
         with col_add:
-            if st.button("Add", use_container_width=True, type="primary"):
-                if candidate_resume.strip():
-                    st.session_state.candidates.insert(
-                        0,
-                        {
-                            "name": candidate_name.strip() or "Unnamed Candidate",
-                            "resume": candidate_resume.strip(),
-                        },
-                    )
-                    st.rerun()
-                st.warning("Paste resume text before adding a candidate.")
+            if st.button(
+                "Add",
+                use_container_width=True,
+                type="primary",
+                disabled=not candidate_resume.strip(),
+            ):
+                st.session_state.candidates.insert(
+                    0,
+                    {
+                        "name": candidate_name.strip() or "Unnamed Candidate",
+                        "resume": candidate_resume.strip(),
+                    },
+                )
+                st.rerun()
 
         with col_sample:
             if st.button("Samples", use_container_width=True):
