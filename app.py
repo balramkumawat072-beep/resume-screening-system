@@ -33,6 +33,46 @@ SAMPLE_CANDIDATES = [
             "systems, and GraphQL APIs. Mentored peers and owned candidate-facing product surfaces."
         ),
     },
+    {
+        "name": "Kabir Sharma",
+        "resume": (
+            "Frontend developer with 3 years of experience building dashboards in React, "
+            "JavaScript, HTML, and CSS. Worked with REST APIs, reusable components, Git, "
+            "responsive layouts, and bug fixing. Recently started using TypeScript and Jest."
+        ),
+    },
+    {
+        "name": "Sara Fernandes",
+        "resume": (
+            "Full-stack engineer with 6 years of experience across React, TypeScript, Node.js, "
+            "PostgreSQL, API integrations, automated testing, and performance optimization. "
+            "Built accessible customer portals and collaborated closely with designers."
+        ),
+    },
+    {
+        "name": "Dev Patel",
+        "resume": (
+            "Recent computer science graduate with internship projects in HTML, CSS, JavaScript, "
+            "React, Firebase, and UI testing. Built a portfolio site, task manager, and weather "
+            "app using public APIs. Strong learner with product and teamwork experience."
+        ),
+    },
+    {
+        "name": "Nisha Rao",
+        "resume": (
+            "QA automation engineer with Selenium, Cypress, JavaScript, regression testing, "
+            "test planning, CI pipelines, and API validation. Comfortable reviewing HTML and CSS "
+            "issues, but limited production React development experience."
+        ),
+    },
+    {
+        "name": "Arjun Menon",
+        "resume": (
+            "Backend engineer with 4 years of Python, Django, Flask, SQL, Docker, cloud deployment, "
+            "and REST API development. Built internal tools and data pipelines. Basic HTML and CSS "
+            "knowledge from admin panel maintenance."
+        ),
+    },
 ]
 
 
