@@ -160,8 +160,40 @@ def apply_styles():
         }
 
         h1, h2, h3 {
-            color: #1c2528;
+            color: #1c2528 !important;
             letter-spacing: 0;
+        }
+
+        p, label, span, div {
+            letter-spacing: 0;
+        }
+
+        [data-testid="stSidebar"] h1,
+        [data-testid="stSidebar"] h2,
+        [data-testid="stSidebar"] h3,
+        [data-testid="stSidebar"] p,
+        [data-testid="stSidebar"] label,
+        [data-testid="stSidebar"] span,
+        [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] {
+            color: #1c2528 !important;
+        }
+
+        [data-testid="stSidebar"] input,
+        [data-testid="stSidebar"] textarea {
+            color: #1c2528 !important;
+            background: #ffffff !important;
+            border: 1px solid #b9c7cc !important;
+            caret-color: #1c2528 !important;
+        }
+
+        [data-testid="stSidebar"] input::placeholder,
+        [data-testid="stSidebar"] textarea::placeholder {
+            color: #7b8b92 !important;
+            opacity: 1 !important;
+        }
+
+        [data-testid="stSidebar"] [data-baseweb="slider"] span {
+            color: #1c2528 !important;
         }
 
         .hero {
@@ -170,7 +202,7 @@ def apply_styles():
 
         .eyebrow {
             margin: 0;
-            color: #617178;
+            color: #4d6269 !important;
             font-size: .78rem;
             font-weight: 800;
             text-transform: uppercase;
@@ -179,11 +211,12 @@ def apply_styles():
         .hero h1 {
             margin: .15rem 0 .35rem;
             font-size: 2.4rem;
+            color: #1c2528 !important;
         }
 
         .hero p {
             max-width: 760px;
-            color: #52656c;
+            color: #405157 !important;
             line-height: 1.55;
         }
 
@@ -208,8 +241,18 @@ def apply_styles():
 
         .metric-card p {
             margin: .35rem 0 0;
-            color: #617178;
+            color: #52656c !important;
             font-weight: 700;
+        }
+
+        [data-testid="stRadio"] label,
+        [data-testid="stRadio"] p,
+        [data-testid="stRadio"] span {
+            color: #1c2528 !important;
+        }
+
+        [data-testid="stAlert"] p {
+            color: #2563eb !important;
         }
 
         .candidate-card {
@@ -383,13 +426,13 @@ def main():
     skill_counts = Counter(
         skill for candidate in scored_candidates for skill in candidate["analysis"]["matched"]
     )
-    top_skill = skill_counts.most_common(1)[0][0] if skill_counts else "—"
+    top_skill = skill_counts.most_common(1)[0][0] if skill_counts else "-"
 
     st.markdown(
         f"""
         <section class="hero">
             <p class="eyebrow">Candidate Intelligence</p>
-            <h1>{role_title} Screening</h1>
+            <h1>{html.escape(role_title)} Screening</h1>
             <p>Rank resumes against role-specific skills, inspect evidence, shortlist candidates, and export a transparent review file.</p>
         </section>
         """,
